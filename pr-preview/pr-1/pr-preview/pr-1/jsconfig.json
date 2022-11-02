@@ -1,0 +1,9 @@
+{
+  "include": [
+    "./app/javascript/**/*"
+  ],
+  "exclude": ["node_modules"],
+  "vueCompilerOptions": {
+    "target": 2,
+  }
+}
