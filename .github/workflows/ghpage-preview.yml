@@ -25,5 +25,5 @@ jobs:
         uses: rossjrw/pr-preview-action@v1.1.1
 
         with:
-          preview-branch: master
+          preview-branch: gh-pages
 
