@@ -26,4 +26,5 @@ jobs:
 
         with:
           preview-branch: gh-pages
+          action: auto
 
