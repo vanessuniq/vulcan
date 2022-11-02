@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
+#       - name: Install and Build
+#         run: |
+#           npm install
+#           npm run build
       - name: Deploy/Remove PR Preview
         uses: rossjrw/pr-preview-action@v1
         with:
