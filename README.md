@@ -1,4 +1,4 @@
-# VulcanS$
+# Vulcan
 
 ## Description
 
