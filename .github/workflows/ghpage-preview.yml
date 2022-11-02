@@ -11,9 +11,14 @@ jobs:
   deploy-preview:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm i &amp;&amp; npm run build
-      - uses: rossjrw/pr-preview-action@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+      - name: Deploy/Remove PR Preview
+        uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: .
           preview-branch: gh-pages
