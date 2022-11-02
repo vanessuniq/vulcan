@@ -1,0 +1,29 @@
+name: Deploy ghPage PR previews
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+    paths:
+      - 'docs/**'
+      - '**.md'
+      - '**.html'
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Deploy PR Preview
+        uses: rossjrw/pr-preview-action@v1.1.1
+
+        with:
+          preview-branch: master
+
