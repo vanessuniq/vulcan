@@ -20,11 +20,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      # - name: Install and Build
+      #   run: |
+      #     npm install
+      #     npm run build
 
       - name: Deploy PR Preview
         uses: rossjrw/pr-preview-action@v1.1.1
-
+        if: contains(['opened', 'reopened', 'synchronize'], github.event.action)
         with:
           preview-branch: gh-pages
-          action: auto
+          action: deploy
+      - name: Delete PR Preview
+        uses: rossjrw/pr-preview-action@v1.1.1
+        if: github.event.action == "closed"
+        with:
+          preview-branch: gh-pages
+          action: remove
 
