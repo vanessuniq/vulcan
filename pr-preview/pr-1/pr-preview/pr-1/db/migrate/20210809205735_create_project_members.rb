@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateProjectMembers < ActiveRecord::Migration[6.1]
   def change
     create_table :project_members do |t|
@@ -6,6 +8,6 @@ class CreateProjectMembers < ActiveRecord::Migration[6.1]
       t.string :role, null: false, default: 'editor'
       t.timestamps
     end
-    add_index :project_members, [ :user_id, :project_id ], unique: true,  name: 'by_user_and_project'
+    add_index :project_members, %i[user_id project_id], unique: true, name: 'by_user_and_project'
   end
 end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class MakeProjectMembersPolymorphic < ActiveRecord::Migration[6.1]
   def change
-    # Remove this uniqueness index because it needs to be replaced later in the migration 
+    # Remove this uniqueness index because it needs to be replaced later in the migration
     remove_index :project_members, column: %i[user_id project_id]
 
     # Memberships are becoming polymorphic, and can now be related to either
@@ -16,7 +18,7 @@ class MakeProjectMembersPolymorphic < ActiveRecord::Migration[6.1]
 
     # Add back a new version of the uniqueness index removed earlier in the migration
     # with one that still accomplishes the goal of "one membership per user for each component/project"
-    add_index :memberships, %i[user_id membership_type membership_id], unique: true,  name: 'by_user_and_membership'
+    add_index :memberships, %i[user_id membership_type membership_id], unique: true, name: 'by_user_and_membership'
 
     # There is now a new "Least" role available called 'viewer
     change_column_default(

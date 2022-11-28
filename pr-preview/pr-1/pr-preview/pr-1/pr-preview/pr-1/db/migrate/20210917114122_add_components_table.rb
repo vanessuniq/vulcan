@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddComponentsTable < ActiveRecord::Migration[6.1]
   def change
     create_table :components do |t|
@@ -6,6 +8,6 @@ class AddComponentsTable < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    add_index :components, [:project_id, :child_project_id], unique: true, name: "components_parent_child_id_index"
+    add_index :components, %i[project_id child_project_id], unique: true, name: 'components_parent_child_id_index'
   end
 end
