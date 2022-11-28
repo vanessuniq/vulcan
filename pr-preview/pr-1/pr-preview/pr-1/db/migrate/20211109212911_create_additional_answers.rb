@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAdditionalAnswers < ActiveRecord::Migration[6.1]
   def change
     create_table :additional_answers do |t|
@@ -5,7 +7,7 @@ class CreateAdditionalAnswers < ActiveRecord::Migration[6.1]
       t.references :additional_question, null: false, foreign_key: true
       t.text :answer
 
-      t.index [:rule_id, :additional_question_id], unique: true
+      t.index %i[rule_id additional_question_id], unique: true
 
       t.timestamps
     end

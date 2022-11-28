@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateProjectMetadataTable < ActiveRecord::Migration[6.1]
   def change
     create_table :project_metadata do |t|
@@ -5,6 +7,6 @@ class CreateProjectMetadataTable < ActiveRecord::Migration[6.1]
       t.bigint :project_id
       t.timestamps
     end
-    add_index :project_metadata, [:project_id], unique: true,  name: 'by_project_id'
+    add_index :project_metadata, [:project_id], unique: true, name: 'by_project_id'
   end
 end
