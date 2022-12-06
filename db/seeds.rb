@@ -67,6 +67,12 @@ parsed_benchmark = Xccdf::Benchmark.parse(srg_xml)
 gpos_srg = SecurityRequirementsGuide.from_mapping(parsed_benchmark)
 gpos_srg.xml = srg_xml
 gpos_srg.save!
+
+srg_xml = File.read('./spec/fixtures/files/U_GPOS_SRG_V2R2_Manual-xccdf.xml')
+parsed_benchmark = Xccdf::Benchmark.parse(srg_xml)
+gpos_srg = SecurityRequirementsGuide.from_mapping(parsed_benchmark)
+gpos_srg.xml = srg_xml
+gpos_srg.save!
 puts 'Created SRGs'
 
 # ---------------------------- #
